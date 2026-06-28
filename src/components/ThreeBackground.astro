@@ -150,8 +150,8 @@
     torus2.rotation.z += 0.002;
 
     // マウス追従
-    camera.position.x = mouseX * 6;
-    camera.position.y = mouseY * 6;
+    camera.position.x = mouseX * 0.3;
+    camera.position.y = mouseY * 0.3;
     camera.lookAt(scene.position);
 
     renderer.render(scene, camera);
