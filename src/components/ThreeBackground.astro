@@ -47,12 +47,12 @@
     renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     camera.position.z = 5;
 
     // パーティクルシステムの作成
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 5000;
+    const particlesCount = 3000;
     const posArray = new Float32Array(particlesCount * 3);
     const colorArray = new Float32Array(particlesCount * 3);
 
