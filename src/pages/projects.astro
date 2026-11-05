@@ -1,12 +1,27 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navigation from '../components/Navigation.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 
-const allProjects = await getCollection('projects');
-const featuredProjects = allProjects.filter(p => p.data.featured);
-const otherProjects = allProjects.filter(p => !p.data.featured);
+const allProjects = [
+  {
+    title: "MintSnap",
+    description: "MintSnap is a Cinnamon extension that lets you snap your windows into flexible, customizable regions on your desktop.",
+    github: "https://github.com/KariMahfoudi/MintSnap",
+    tags: ["JavaScript", "Linux Mint", "Cinnamon"],
+    featured: true,
+  },
+  {
+    title: "Site du Zéro Archive",
+    description: "Archived collection of classic programming and computer science educational PDFs.",
+    github: "https://github.com/KariMahfoudi/site-du-zero-old-pdf",
+    tags: ["C", "Archive", "Computer Science"],
+    featured: true,
+  }
+];
+
+const featuredProjects = allProjects.filter(p => p.featured);
+const otherProjects = allProjects.filter(p => !p.featured);
 ---
 
 <BaseLayout
@@ -19,8 +34,7 @@ const otherProjects = allProjects.filter(p => !p.data.featured);
     <div class="container">
       <header class="projects-header">
         <h1 class="page-title">Projects</h1>
-        <p class="page-subtitle">
-        </p>
+        <p class="page-subtitle"></p>
       </header>
 
       {featuredProjects.length > 0 && (
@@ -29,12 +43,12 @@ const otherProjects = allProjects.filter(p => !p.data.featured);
           <div class="projects-grid featured-grid">
             {featuredProjects.map((project) => (
               <ProjectCard
-                title={project.data.title}
-                description={project.data.description}
-                image={project.data.image}
-                link={project.data.link}
-                github={project.data.github}
-                tags={project.data.tags}
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                link={project.link}
+                github={project.github}
+                tags={project.tags}
                 featured={true}
               />
             ))}
@@ -48,12 +62,12 @@ const otherProjects = allProjects.filter(p => !p.data.featured);
           <div class="projects-grid">
             {otherProjects.map((project) => (
               <ProjectCard
-                title={project.data.title}
-                description={project.data.description}
-                image={project.data.image}
-                link={project.data.link}
-                github={project.data.github}
-                tags={project.data.tags}
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                link={project.link}
+                github={project.github}
+                tags={project.tags}
               />
             ))}
           </div>
